@@ -1,7 +1,7 @@
 
 const PRECACHE = 'cache-v30';
 const RUNTIME = 'runtime';
-const path = '/id/'
+const path = '/MYSAGOV/'
 
 const PRECACHE_URLS = [
     path + 'icon.png',
@@ -22,7 +22,8 @@ const PRECACHE_URLS = [
     path + 'hammer.min.js',
     path + 'phone.jpeg',
     path + 'globe.jpeg',
-    path + 'govfoot.jpg'
+    path + 'govfoot.jpg',
+  path + 'photo.png'
 
 ];
 
