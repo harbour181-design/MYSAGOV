@@ -2337,11 +2337,25 @@
 
 
         function displayDetails() {
-            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-                DeviceMotionEvent.requestPermission().catch(()=>{})
-            }
+            requestMotionPermission()
             authenticateUser()
             if (!hasAuthed) document.querySelector(".slideUpAuth").style = 'top:1%;'
+        }
+
+        var motionPermissionGranted = false;
+        function requestMotionPermission() {
+            if (motionPermissionGranted) return;
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+                DeviceMotionEvent.requestPermission().then(function(state) {
+                    if (state === 'granted') {
+                        motionPermissionGranted = true;
+                        myShakeEvent.stop();
+                        myShakeEvent.start();
+                    }
+                }).catch(function(){});
+            } else {
+                motionPermissionGranted = true;
+            }
         }
         async function hideDetails() {
             document.querySelector(".slideUp").style = 'top:100%;'
@@ -2378,30 +2392,26 @@
         }
 
 
-        document.querySelector(".plus").addEventListener("click", onClick)
-        function onClick() {
-            // feature detect
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
+        document.querySelector(".plus").addEventListener("click", function() {
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
                 DeviceMotionEvent.requestPermission()
                     .then(async (permissionState) => {
                         if (permissionState === "granted") {
+                            motionPermissionGranted = true;
+                            myShakeEvent.stop();
+                            myShakeEvent.start();
                             document.querySelector(".plus").style.fill = "green";
                             await new Promise(r => { setTimeout(r, 500) })
                             document.querySelector(".plus").style.fill = "";
-
                         } else {
                             document.querySelector(".plus").style.fill = "red";
                             await new Promise(r => { setTimeout(r, 500) })
                             document.querySelector(".plus").style.fill = "";
                         }
-
                     })
                     .catch(console.error);
-            } else {
-                alert("shake not avaliable")
             }
-        }
+        })
 
         var myShakeEvent = new Shake({
             threshold: 8,
