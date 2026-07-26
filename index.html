@@ -69,7 +69,7 @@
             background-color: black;
             position: relative;
             width: 100%;
-            height: 5%;
+            height: 6.5%;
         }
 
         .header2 {
@@ -139,12 +139,12 @@
 
         .list {
             position: absolute;
-            top: 5%;
+            top: 6.5%;
             width: 100%;
             left: 0;
             padding: 17px;
             box-sizing: border-box;
-            height: calc(100vh - 5%);
+            height: calc(100vh - 6.5%);
             overflow-y: scroll;
 
         }
@@ -212,7 +212,7 @@
         .header>h {
             position: absolute;
             width: 100vw;
-            bottom: 15px;
+            bottom: 18px;
             text-align: center;
             color: white;
             font-family: "LatoBold";
@@ -453,13 +453,11 @@
         }
 
         .id-img {
-            width: calc(50vw - 13px);
-            aspect-ratio: 55/60;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             position: relative;
             pointer-events: auto;
-            min-height: 100%;
         }
 
 
@@ -1433,7 +1431,7 @@
         <img src="./mysagov.jpeg" />
     </div>
     <div class="main">
-        <div class="validate">
+        <div class="validate" onclick="displayDetails()">
             <div></div>
             <img src="./validate.png" />
             <p>Validate</p>
@@ -1457,6 +1455,7 @@
         </div>
         <div class="header">
             <h>Credentials</h>
+            <span id="refreshText" style="position:absolute;bottom:2px;width:100%;text-align:center;color:rgba(255,255,255,0.55);font-family:'Lato';font-size:10.5px;letter-spacing:0.2px;">Refreshed just now</span>
             <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"
                 id="focusme" style="opacity:0;height:0px;
             width:0px" />
@@ -1511,7 +1510,7 @@
                         <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;">Provisional Driver's Licence</p>
                         <p style="color:rgba(255,255,255,0.8);font-family:'Lato';font-size:12px;margin:0;margin-top:2px;">Active until 18 November 2027</p>
                     </div>
-                    <img src="./steering.png" style="width:32px;height:32px;opacity:0.9;" />
+                    <svg style="width:30px;height:30px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.8"/><line x1="12" y1="3" x2="12" y2="9" stroke="white" stroke-width="1.8"/><line x1="3.4" y1="14" x2="9.2" y2="12.8" stroke="white" stroke-width="1.8"/><line x1="20.6" y1="14" x2="14.8" y2="12.8" stroke="white" stroke-width="1.8"/></svg>
                 </div>
             </div>
             <div class="lBlock"></div>
@@ -2405,17 +2404,41 @@
         }
 
         var myShakeEvent = new Shake({
-            threshold: 12, // optional shake strength threshold
-            timeout: 500 // optional, determines the frequency of event generation
+            threshold: 8,
+            timeout: 500
         });
         myShakeEvent.start();
         window.addEventListener('shake', shakeEventDidOccur, false);
 
-        //function to call when shake occurs
         function shakeEventDidOccur() {
-
-            //put your own code here etc.
             showShakeAnimation()
+        }
+
+        var lastRefreshTime = Date.now();
+        function updateRefreshText() {
+            var diff = Math.floor((Date.now() - lastRefreshTime) / 60000);
+            var el = document.getElementById('refreshText');
+            if (!el) return;
+            if (diff < 1) el.innerText = 'Refreshed just now';
+            else if (diff === 1) el.innerText = 'Refreshed 1 minute ago';
+            else el.innerText = 'Refreshed ' + diff + ' minutes ago';
+        }
+        setInterval(updateRefreshText, 30000);
+
+        var pullStartY = 0;
+        var listEl = document.querySelector('.list');
+        if (listEl) {
+            listEl.addEventListener('touchstart', function(e) {
+                if (listEl.scrollTop <= 0) pullStartY = e.touches[0].clientY;
+            }, {passive: true});
+            listEl.addEventListener('touchend', function(e) {
+                var pullDist = e.changedTouches[0].clientY - pullStartY;
+                if (pullDist > 80 && listEl.scrollTop <= 0) {
+                    lastRefreshTime = Date.now();
+                    updateRefreshText();
+                }
+                pullStartY = 0;
+            }, {passive: true});
         }
     </script>
 </body>
