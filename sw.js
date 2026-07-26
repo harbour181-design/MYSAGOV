@@ -1,7 +1,7 @@
 
 const PRECACHE = 'cache-v30';
 const RUNTIME = 'runtime';
-const path = '/id/'
+const path = '/MYSAGOV/'
 
 const PRECACHE_URLS = [
     path + 'icon.png',
