@@ -22,7 +22,8 @@ const PRECACHE_URLS = [
     path + 'hammer.min.js',
     path + 'phone.jpeg',
     path + 'globe.jpeg',
-    path + 'govfoot.jpg'
+    path + 'govfoot.jpg',
+  path + 'photo.png'
 
 ];
 

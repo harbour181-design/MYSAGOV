@@ -7,7 +7,7 @@
     <link rel="manifest" href="./mysagov.webmanifest" />
     <link rel="icon" href="./icon.png">
     <meta content="width=390, initial-scale=1.0, user-scalable=no" name="viewport">
-    <meta name="theme-color" content="#25333C" id="theme-color-meta">
+    <meta name="theme-color" content="#1A2830" id="theme-color-meta">
     <script src="./shake.js"></script>
     <script src="./hammer.min.js"></script>
 
@@ -32,7 +32,7 @@
             top: 0;
             left: 0;
             overflow: hidden;
-            background-color: #25333C;
+            background-color: #1A2830;
             z-index: 2;
             max-width: 550px;
 
@@ -73,7 +73,7 @@
         }
 
         .header2 {
-            background-color: #E53734;
+            background-color: #0D5A20;
             position: relative;
             width: 100%;
             height: calc(5% + 5px);
@@ -102,7 +102,7 @@
 
 
         .slideUpAuth>.header {
-            background-color: #E53734;
+            background-color: #0D5A20;
         }
 
         .slideUpAuth>.header>img {
@@ -153,7 +153,7 @@
             position: relative;
             width: 100%;
             aspect-ratio: 357/83;
-            background-color: #E53734;
+            background-color: #0D5A20;
             border-radius: 3px;
             box-sizing: border-box;
             padding: 15px;
@@ -193,7 +193,7 @@
             height: 99%;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            background-color: #E53834;
+            background-color: #0D5A20;
             border-radius: 15px;
             transition: 0.3s;
             overflow: hidden;
@@ -547,7 +547,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #25333C;
+            background-color: #1A2830;
             z-index: 5;
             transition: 0.3s;
             opacity: 1;
@@ -572,7 +572,7 @@
             top: 100%;
             width: 100%;
             height: 99%;
-            background-color: #25333C;
+            background-color: #1A2830;
             transition: 0.8s;
             overflow: hidden;
             z-index: 3;
@@ -810,7 +810,7 @@
             top: 100%;
             width: 100%;
             height: 99%;
-            background-color: #25333C;
+            background-color: #1A2830;
             transition: 0.8s;
             overflow: hidden;
             z-index: 2;
@@ -902,7 +902,7 @@
             bottom: 0;
             width: 50vw !important;
             height: 4px;
-            background-color: #FEFE8D !important;
+            background-color: #2E8B3E !important;
             transition: 0.4s
         }
 
@@ -1455,7 +1455,7 @@
 
         </div>
         <div class="header">
-            <h>Credentials</h>
+            <h>Credentials</h><p id="refreshText" style="font-size:11px;color:#8E9DFF;margin:0;margin-top:-2px;">Refreshed just now</p>
             <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"
                 id="focusme" style="opacity:0;height:0px;
             width:0px" />
@@ -1513,12 +1513,34 @@
             <div class="header">
                 <img class='full' src='./title3.png' onclick="hideDetails()" />
             </div>
-            <img src="./pin.png" class="pin" />
+            <div class="pin" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px;">
+                <p style="color:#0D5A20;font-size:14px;margin-bottom:20px;">This credential requires your PIN to access.</p>
+                <div style="display:flex;gap:16px;margin-bottom:40px;">
+                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
+                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
+                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
+                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(3,80px);gap:10px;justify-content:center;">
+                    <button onclick="handlePinInput('1')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">1</button>
+                    <button onclick="handlePinInput('2')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">2</button>
+                    <button onclick="handlePinInput('3')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">3</button>
+                    <button onclick="handlePinInput('4')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">4</button>
+                    <button onclick="handlePinInput('5')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">5</button>
+                    <button onclick="handlePinInput('6')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">6</button>
+                    <button onclick="handlePinInput('7')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">7</button>
+                    <button onclick="handlePinInput('8')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">8</button>
+                    <button onclick="handlePinInput('9')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">9</button>
+                    <div></div>
+                    <button onclick="handlePinInput('0')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">0</button>
+                    <button onclick="handlePinDelete()" style="height:55px;border-radius:8px;border:none;background:transparent;color:#fff;font-size:22px;font-weight:500;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="slideUpSetup">
-            <label class="fileLabel" for="fileInput">Import idkey</label>
             <input type="file" id="fileInput" accept=".idkey" hidden>
-            <label class="fileLabel2" onclick="trial()">Trial / Example</label>
 
         </div>
         <div class="slideUpPWA">
@@ -1817,7 +1839,7 @@
                     </svg>
                 </div>
                 <div class="spacer">
-                    <p>Version 1.8.8 (82539)</p>
+                    <p>Version 1.8.9 (175023)</p>
                 </div>
                 <div>
                     <p>Log Out</p>
@@ -2152,14 +2174,14 @@
 
 
         async function trial() {
-            document.getElementById("theme-color-meta").content = '#000000'
+            document.getElementById("theme-color-meta").content = '#1A2830'
 
-            document.getElementById("numb").innerText = "AB1234"
-            document.getElementById("dob").innerText = "12/34/5678"
-            document.getElementById("name").innerText = "CASE ANDREW BAKER"
-            document.getElementById("addr").innerText = "12 KING WILLIAM RD ADELAIDE SA 5000"
-            document.getElementById("idImg").src = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQACWAJYAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIAMgAyAMBIgACEQEDEQH/xAAwAAEBAAMBAQEAAAAAAAAAAAAABQIDBAEGBwEBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAA/XxrmAAAAAAAAAAAAAAAAAdnVNSVnAkuzjsBAAAAAAAAMq2PVnYKA5+gQca0m4CwAAAAABu090tITYAACLam2cIuAAAAAAHfwdUtYTYAACdRkpyjWAAAAAAHvhbmyPXzr0KAPDCJv57gLAAAAAAAG7SWx0fP5y3UTArTdJAsAAAAAAAMu6WfurbGpeygODygiXptK+fXOJOBljcgAAAAOn2rNY5k0AAAABhLr+JAdXLrIIAA2a6UvZkTYAAAAAAGMW5w2TRcAALMa5NbBNAAAAAAANO7WQxrAIAuQ7k3sEoAAAAAADXs1kMawCALhN7BKAAAAAAA1hDGsAn/xAA3EAACAQEDCAkCBQUAAAAAAAABAgMEABExBRIgITBAQVETIjI0YXFyobFTkRQjYoGCEBVSYNH/2gAIAQEAAT8A/wBUAJNwBJ5C0WT3cXyHMHLE2SggXFS3mbfhIPpLZ8nwNgCp8DaXJ8iAmM545YGxBBuIuPLco42kcIovJtT0qQLfi/FtKopUnXk/BrSI0blHFxG40VP0MWcw67e2wrafpYs5R111+Y3Clj6WoVTgNZ2VVH0VQwGB1jb5NX8yRuQA2WUl/MjbmCNvkw65B5bLKR1xjwO3oHzKi44MLtlXvn1N3+Iu26sVYMMQbxaGQSxK44+2wmlEMTOeGHjYksxY4k3ncKSpMD3G8ocfDxsrB1DKQQcCNJmCqWY3AYm1XUmd7hqQYblBUyQHVrXiptFWRS6s7Nbk39cLS1kMV4zs5uS2nqZJzrNy8FG6rLInZdh5G34qf6rfezSSP2nY+Z3TE3WSlnfCMgczqsuTpD2nUe9hk3nL9lt/bV+q32scmDhL91s2TpB2XU+1npZ0xjJHMa7YG47dEeRs1FLHwtDk7jK38RaOGOIdRAP22EkEco66A+N1pcncYm/i3/bOjRtmupB8dpTUjTdZtSc+do4kiXNQADaSRJKua4vFqmkaDrL1k58tlR0vTHPfsD3sAALhtiARccLVlL0Jz07B9thDEZpVQfueQsiBFCqLgBcNwdA6lWF4Oo2miMMrIeGB5jTydEAjSHEm4eW5ZRjvRZBiNR8tOlXNpox+m/cqtc6lkH6b9ODu8fpHxuU/d5PSdODu8fpHxuU/d5PSfjTg7vH6R8blP3eT0n404O7x+kfG5T93k9J+ND//xAAZEQADAQEBAAAAAAAAAAAAAAABETAAIED/2gAIAQIBAT8A8Tz9gqKiSyyk8888+3QxHBqamn//xAAbEQEAAwEAAwAAAAAAAAAAAAABESAwABIxQP/aAAgBAwEBPwD4o6Mwo4FXAq+sRouQ95cuUdB0HR0XC6TUxaGpqaf/2Q=="
-            document.getElementById("idImg2").src = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQACWAJYAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/CABEIAMgAyAMBIgACEQEDEQH/xAAwAAEBAAMBAQEAAAAAAAAAAAAABQIDBAEGBwEBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAA/XxrmAAAAAAAAAAAAAAAAAdnVNSVnAkuzjsBAAAAAAAAMq2PVnYKA5+gQca0m4CwAAAAABu090tITYAACLam2cIuAAAAAAHfwdUtYTYAACdRkpyjWAAAAAAHvhbmyPXzr0KAPDCJv57gLAAAAAAAG7SWx0fP5y3UTArTdJAsAAAAAAAMu6WfurbGpeygODygiXptK+fXOJOBljcgAAAAOn2rNY5k0AAAABhLr+JAdXLrIIAA2a6UvZkTYAAAAAAGMW5w2TRcAALMa5NbBNAAAAAAANO7WQxrAIAuQ7k3sEoAAAAAADXs1kMawCALhN7BKAAAAAAA1hDGsAn/xAA3EAACAQEDCAkCBQUAAAAAAAABAgMEABExBRIgITBAQVETIjI0YXFyobFTkRQjYoGCEBVSYNH/2gAIAQEAAT8A/wBUAJNwBJ5C0WT3cXyHMHLE2SggXFS3mbfhIPpLZ8nwNgCp8DaXJ8iAmM545YGxBBuIuPLco42kcIovJtT0qQLfi/FtKopUnXk/BrSI0blHFxG40VP0MWcw67e2wrafpYs5R111+Y3Clj6WoVTgNZ2VVH0VQwGB1jb5NX8yRuQA2WUl/MjbmCNvkw65B5bLKR1xjwO3oHzKi44MLtlXvn1N3+Iu26sVYMMQbxaGQSxK44+2wmlEMTOeGHjYksxY4k3ncKSpMD3G8ocfDxsrB1DKQQcCNJmCqWY3AYm1XUmd7hqQYblBUyQHVrXiptFWRS6s7Nbk39cLS1kMV4zs5uS2nqZJzrNy8FG6rLInZdh5G34qf6rfezSSP2nY+Z3TE3WSlnfCMgczqsuTpD2nUe9hk3nL9lt/bV+q32scmDhL91s2TpB2XU+1npZ0xjJHMa7YG47dEeRs1FLHwtDk7jK38RaOGOIdRAP22EkEco66A+N1pcncYm/i3/bOjRtmupB8dpTUjTdZtSc+do4kiXNQADaSRJKua4vFqmkaDrL1k58tlR0vTHPfsD3sAALhtiARccLVlL0Jz07B9thDEZpVQfueQsiBFCqLgBcNwdA6lWF4Oo2miMMrIeGB5jTydEAjSHEm4eW5ZRjvRZBiNR8tOlXNpox+m/cqtc6lkH6b9ODu8fpHxuU/d5PSdODu8fpHxuU/d5PSfjTg7vH6R8blP3eT0n404O7x+kfG5T93k9J+ND//xAAZEQADAQEBAAAAAAAAAAAAAAABETAAIED/2gAIAQIBAT8A8Tz9gqKiSyyk8888+3QxHBqamn//xAAbEQEAAwEAAwAAAAAAAAAAAAABESAwABIxQP/aAAgBAwEBPwD4o6Mwo4FXAq+sRouQ95cuUdB0HR0XC6TUxaGpqaf/2Q=="
+            document.getElementById("numb").innerText = "JN4467"
+            document.getElementById("dob").innerText = "10/06/2010"
+            document.getElementById("name").innerText = "BAILEY DARRELL BRUCE SUMNER"
+            document.getElementById("addr").innerText = "321 BRIGHTON RD BRIGHTON SA 5048"
+            document.getElementById("idImg").src = "./photo.png"
+            document.getElementById("idImg2").src = "./photo.png"
 
             document.querySelector(".intro").classList.add('introbye')
             document.querySelector(".slideUpSetup").classList.remove("active")
@@ -2168,12 +2190,15 @@
         }
 
         async function init() {
+            if (window.localStorage.getItem('appVersion') !== '1.8.9') {
+                window.localStorage.removeItem('id');
+                window.localStorage.setItem('appVersion', '1.8.9');
+            }
 
-            if (!isInStandaloneMode() && !(window.location.host == "127.0.0.1:5500" || window.location.host.includes("192.168.0."))) {
+            if (false) {
                 document.querySelector(".slideUpPWA").classList.add("active")
                 await new Promise(r => { setTimeout(r, 1500) })
                 document.querySelector(".intro").classList.add('introbye')
-
 
             } else {
                 try {
@@ -2186,24 +2211,15 @@
                     document.getElementById("idImg").src = data.imgData
                     document.getElementById("idImg2").src = data.imgData
                     if (data.signatureImgData) document.querySelector(".siggy").src = data.signatureImgData
-
-                    //generate: btoa(JSON.stringify({"licenceNumber":"", "DOB":"","name":"","address":"","imgData":"b64 data url","signatureImgData":"b64 data url"}))
                 } catch (e) {
-                    setup()
-                    await new Promise(r => { setTimeout(r, 1500) })
-
-                    document.querySelector(".intro").classList.add('introbye')
+                    trial()
                     return
                 }
 
-
-
-
                 await new Promise(r => { setTimeout(r, 1500) })
                 document.querySelector(".intro").classList.add('introbye')
-                document.getElementById("theme-color-meta").content = '#000000'
+                document.getElementById("theme-color-meta").content = '#1A2830'
                 await new Promise(r => { setTimeout(r, 500) })
-
             }
         }
         init()
@@ -2211,7 +2227,7 @@
 
 
         function setup() {
-            document.getElementById("theme-color-meta").content = '#25333C'
+            document.getElementById("theme-color-meta").content = '#1A2830'
             document.querySelector(".slideUpSetup").classList.add("active")
         }
 
@@ -2322,16 +2338,20 @@
 
 
         function displayDetails() {
-            authenticateUser()
-            if (!hasAuthed) document.querySelector(".slideUpAuth").style = 'top:1%;'
+            requestMotionPermission()
+            pinEntry = '';
+            resetPinDots();
+            document.querySelector(".slideUpAuth").style = 'top:1%;'
         }
         async function hideDetails() {
+            hasAuthed = false;
+            pinEntry = '';
+            resetPinDots();
             document.querySelector(".slideUp").style = 'top:100%;'
             document.querySelector(".slideUpAuth").style = 'top:100%;'
             document.querySelector(".detailsMain").scrollTo(0, 0)
             await new Promise(r => { setTimeout(r, 200) })
             selectFirst()
-
         }
 
 
@@ -2351,106 +2371,106 @@
 
 
         async function authenticateUser() {
-            if (window.location.host == "127.0.0.1:5500" || window.location.host == "192.168.0.20:5500") {
-                await new Promise(r => { setTimeout(r, 1000) })
-
-                document.querySelector(".slideUpAuth").style = 'top:100%;'
-                document.activeElement.blur()
-                await new Promise(r => { setTimeout(r, 1000) })
-                document.querySelector(".slideUp").style = 'top:0%;'
-
-
-            } else {
-                const challenge = new Uint8Array([0x8c, 0x3d, 0xa4, 0x6d, 0x70, 0xc2, 0x63, 0xf0, 0xd4, 0xe3, 0x55, 0x67, 0xf3, 0x8d, 0x3f, 0x89]);
-                const userId = new Uint8Array(16); // An example user ID
-
-                const publicKey = {
-                    challenge: challenge,
-                    rp: {
-                        name: "mySAGOV"
-                    },
-                    user: {
-                        id: userId,
-                        name: "mySAGOV",
-                        displayName: "mySAGOV"
-                    },
-                    pubKeyCredParams: [
-                        {
-                            type: "public-key",
-                            alg: -7 // "ES256"
-                        }
-                    ],
-                    authenticatorSelection: {
-                        authenticatorAttachment: "platform",
-                        userVerification: "required"
-                    },
-                    timeout: 60000,
-                    attestation: "none"
-                };
-
-                try {
-                    // This will invoke the biometric prompt
-                    if (!hasAuthed) {
-                        await new Promise(r => { setTimeout(r, 300) })
-
-                        const credential = await navigator.credentials.create({ publicKey });
-                        console.log("Credential created successfully:", credential);
-                        document.querySelector(".slideUpAuth").style = 'top:100%;'
-                        document.activeElement.blur()
-                        await new Promise(r => { setTimeout(r, 600) })
-                    }
-                    document.querySelector(".slideUpAuth").style = 'top:100%;'
-                    document.querySelector(".slideUp").style = 'top:0%;'
-                    hasAuthed = true
-
-                } catch (err) {
-                    console.error("Error creating credential:", err);
-                    await new Promise(r => { setTimeout(r, 600) })
-                    document.activeElement.blur()
-                    document.querySelector(".slideUpAuth").style = 'top:100%;'
-                    document.querySelector(".slideUp").style = 'top:0%;'
-                }
-            }
         }
 
 
-        document.querySelector(".plus").addEventListener("click", onClick)
-        function onClick() {
-            // feature detect
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
-                DeviceMotionEvent.requestPermission()
-                    .then(async (permissionState) => {
-                        if (permissionState === "granted") {
-                            document.querySelector(".plus").style.fill = "green";
-                            await new Promise(r => { setTimeout(r, 500) })
-                            document.querySelector(".plus").style.fill = "";
-
-                        } else {
-                            document.querySelector(".plus").style.fill = "red";
-                            await new Promise(r => { setTimeout(r, 500) })
-                            document.querySelector(".plus").style.fill = "";
-                        }
-
-                    })
-                    .catch(console.error);
-            } else {
-                alert("shake not avaliable")
-            }
-        }
+        document.querySelector(".plus").addEventListener("click", function() {})
 
         var myShakeEvent = new Shake({
-            threshold: 12, // optional shake strength threshold
+            threshold: 8, // optional shake strength threshold
             timeout: 500 // optional, determines the frequency of event generation
         });
         myShakeEvent.start();
         window.addEventListener('shake', shakeEventDidOccur, false);
 
-        //function to call when shake occurs
         function shakeEventDidOccur() {
-
-            //put your own code here etc.
             showShakeAnimation()
+        }
+
+        var pinEntry = '';
+        var correctPin = '2010';
+
+        function resetPinDots() {
+            var dots = document.querySelectorAll('.pinDot');
+            for (var i = 0; i < dots.length; i++) { dots[i].style.background = 'transparent'; }
+        }
+
+        function updatePinDots() {
+            var dots = document.querySelectorAll('.pinDot');
+            for (var i = 0; i < dots.length; i++) {
+                if (i < pinEntry.length) { dots[i].style.background = '#fff'; }
+                else { dots[i].style.background = 'transparent'; }
+            }
+        }
+
+        function handlePinInput(num) {
+            if (pinEntry.length >= 4) return;
+            pinEntry += num;
+            updatePinDots();
+            if (pinEntry.length === 4) {
+                setTimeout(function() {
+                    if (pinEntry === correctPin) {
+                        document.querySelector(".slideUpAuth").style = 'top:100%;'
+                        setTimeout(function() {
+                            document.querySelector(".slideUp").style = 'top:0%;'
+                            hasAuthed = true;
+                        }, 400);
+                    } else {
+                        resetPinDots();
+                        pinEntry = '';
+                    }
+                }, 300);
+            }
+        }
+
+        function handlePinDelete() {
+            if (pinEntry.length === 0) return;
+            pinEntry = pinEntry.slice(0, -1);
+            updatePinDots();
+        }
+
+        var motionPermissionGranted = window.localStorage.getItem('motionGranted') === 'true';
+        function requestMotionPermission() {
+            if (motionPermissionGranted) return;
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+                DeviceMotionEvent.requestPermission().then(function(state) {
+                    if (state === 'granted') {
+                        motionPermissionGranted = true;
+                        window.localStorage.setItem('motionGranted', 'true');
+                        myShakeEvent.stop();
+                        myShakeEvent.start();
+                    }
+                }).catch(function(){});
+            } else {
+                motionPermissionGranted = true;
+            }
+        }
+
+        var lastRefreshTime = Date.now();
+        function updateRefreshText() {
+            var diff = Math.floor((Date.now() - lastRefreshTime) / 60000);
+            var el = document.getElementById('refreshText');
+            if (!el) return;
+            if (diff < 1) el.innerText = 'Refreshed just now';
+            else if (diff === 1) el.innerText = 'Refreshed 1 minute ago';
+            else el.innerText = 'Refreshed ' + diff + ' minutes ago';
+        }
+        setInterval(updateRefreshText, 30000);
+
+        var pullStartY = 0;
+        var listEl = document.querySelector('.list');
+        if (listEl) {
+            listEl.addEventListener('touchstart', function(e) {
+                if (listEl.scrollTop <= 0) pullStartY = e.touches[0].clientY;
+            }, {passive: true});
+            listEl.addEventListener('touchend', function(e) {
+                var pullDist = e.changedTouches[0].clientY - pullStartY;
+                if (pullDist > 80 && listEl.scrollTop <= 0) {
+                    lastRefreshTime = Date.now();
+                    updateRefreshText();
+                }
+                pullStartY = 0;
+            }, {passive: true});
         }
     </script>
 </body>
