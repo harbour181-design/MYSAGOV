@@ -159,20 +159,43 @@
             padding: 15px;
             padding-top: 5px;
             padding-bottom: 5px;
-            letter-spacing: 0.7px;
+            letter-spacing: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             transition: 0.3s ease-out;
             scroll-snap-type: mandatory
         }
 
-        .license>img {
-            position: relative;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 374/40;
+        .licenseText {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
+        .licenseTitle {
+            margin: 0;
+            color: #ffffff;
+            font-family: "LatoBold";
+            font-size: 17px;
+            line-height: 1.25;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .licenseSub {
+            margin: 0;
+            margin-top: 2px;
+            color: #ffffff;
+            font-family: "Lato";
+            font-size: 13px;
+            line-height: 1.25;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wheel {
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0;
         }
 
         .slideUp {
@@ -211,11 +234,25 @@
         .header>h {
             position: absolute;
             width: 100vw;
-            bottom: 15px;
+            bottom: 18px;
             text-align: center;
             color: white;
             font-family: "LatoBold";
             font-size: 16px;
+            opacity: 1;
+            transition: 0.3s
+        }
+
+        .header>#refreshText {
+            position: absolute;
+            width: 100vw;
+            left: 0;
+            bottom: 3px;
+            margin: 0;
+            text-align: center;
+            color: #a0a6ac;
+            font-family: "Lato";
+            font-size: 11px;
             opacity: 1;
             transition: 0.3s
         }
@@ -1114,7 +1151,8 @@
             opacity: 0
         }
 
-        .main:has(.settingsMain.shown)>.header>h {
+        .main:has(.settingsMain.shown)>.header>h,
+        .main:has(.settingsMain.shown)>.header>#refreshText {
             opacity: 0;
             transform: translateX(-100px);
         }
@@ -1455,7 +1493,8 @@
 
         </div>
         <div class="header">
-            <h>Credentials</h><p id="refreshText" style="font-size:11px;color:#8E9DFF;margin:0;margin-top:-2px;">Refreshed just now</p>
+            <h>Credentials</h>
+            <p id="refreshText">Refreshed just now</p>
             <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" title="Non-negative integral number"
                 id="focusme" style="opacity:0;height:0px;
             width:0px" />
@@ -1505,7 +1544,16 @@
                 <div></div>
             </div>
             <div class="license" onclick="if(!hasAuthed){document.querySelector('#focusme').focus();} displayDetails()">
-                <img src="./content.png">
+                <div class="licenseText">
+                    <p class="licenseTitle">Provisional Driver's Licence</p>
+                    <p class="licenseSub">Active until 10 October 2026</p>
+                </div>
+                <svg class="wheel" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="11.5" fill="#ffffff" />
+                    <path d="M4.06,11.02 A8,8 0 0 1 19.94,11.02 L15.97,11.51 A4,4 0 0 0 8.03,11.51 Z" fill="#0D5A20" />
+                    <path d="M19.94,12.98 A8,8 0 0 1 12.98,19.94 L12.49,15.97 A4,4 0 0 0 15.97,12.49 Z" fill="#0D5A20" />
+                    <path d="M11.02,19.94 A8,8 0 0 1 4.06,12.98 L8.03,12.49 A4,4 0 0 0 11.51,15.97 Z" fill="#0D5A20" />
+                </svg>
             </div>
             <div class="lBlock"></div>
         </div>
