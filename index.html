@@ -69,7 +69,7 @@
             background-color: black;
             position: relative;
             width: 100%;
-            height: 6.5%;
+            height: 5%;
         }
 
         .header2 {
@@ -139,12 +139,12 @@
 
         .list {
             position: absolute;
-            top: 6.5%;
+            top: 5%;
             width: 100%;
             left: 0;
             padding: 17px;
             box-sizing: border-box;
-            height: calc(100vh - 6.5%);
+            height: calc(100vh - 5%);
             overflow-y: scroll;
 
         }
@@ -152,11 +152,14 @@
         .license {
             position: relative;
             width: 100%;
+            aspect-ratio: 357/83;
             background-color: #0D5A20;
-            border-radius: 12px;
+            border-radius: 3px;
             box-sizing: border-box;
-            padding: 18px 16px;
-            letter-spacing: 0.3px;
+            padding: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            letter-spacing: 0.7px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -167,6 +170,7 @@
             position: relative;
             width: 100%;
             height: auto;
+            aspect-ratio: 374/40;
         }
 
         .slideUp {
@@ -210,11 +214,11 @@
         .header>h {
             position: absolute;
             width: 100vw;
-            bottom: 20px;
+            bottom: 15px;
             text-align: center;
             color: white;
             font-family: "LatoBold";
-            font-size: 17px;
+            font-size: 16px;
             opacity: 1;
             transition: 0.3s
         }
@@ -473,34 +477,44 @@
 
         .validate {
             position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 52px;
-            padding: 0 28px;
-            background-color: #F0F0F0;
-            border-radius: 26px;
+            bottom: 40px;
+            left: 30%;
+            width: 40%;
+            height: 60px;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            border-radius: 30px;
             z-index: 2;
             display: flex;
             flex-direction: row;
             justify-content: center;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 5px;
             opacity: 1;
-            transition: 0.3s;
-            cursor: pointer;
+            transition: 0.3s
+        }
+
+        .validate>div {
+            flex-grow: 1;
+            height: 100%;
+            width: auto;
         }
 
         .validate>img {
-            height: 24px;
+            top: 13px;
+            height: calc(100% - 28px);
+            position: relative;
         }
 
         .validate>p {
+            position: relative;
             font-family: "Lato";
             color: #788AE7;
-            font-size: 16px;
+            font-size: 17px;
             margin: 0;
-            white-space: nowrap;
+            margin-left: 5px;
+            height: 100%;
+            line-height: 60px;
             pointer-events: auto;
         }
 
@@ -1450,8 +1464,10 @@
             </div>
         </div>
         <div class="validate" onclick="openScanner()">
+            <div></div>
             <img src="./validate.png" />
             <p>Validate</p>
+            <div></div>
         </div>
         <div class="fullScreenPhoto" id="fullScreenPhoto" onscroll="(e)=>{e.preventDefault()}">
             <div class="x"><svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1"
@@ -1471,7 +1487,7 @@
         </div>
         <div class="header">
             <h>Credentials</h>
-            <span id="refreshText" style="position:absolute;bottom:2px;width:100%;text-align:center;color:rgba(255,255,255,0.55);font-family:'Lato';font-size:10.5px;letter-spacing:0.2px;">Refreshed just now</span>
+            <span id="refreshText" style="position:absolute;bottom:1px;width:100%;text-align:center;color:rgba(255,255,255,0.5);font-family:'Lato';font-size:10px;">Refreshed just now</span>
             <input type="tel" inputmode="numeric" pattern="[0-9]*"
                 id="focusme" style="opacity:0;height:0px;width:0px;position:absolute;" />
             <svg class="settings" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1522,12 +1538,10 @@
             <div class="license" onclick="if(!hasAuthed){document.querySelector('#focusme').focus();} displayDetails()">
                 <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
                     <div>
-                        <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;">Provisional Driver's Licence</p>
-                        <p style="color:rgba(255,255,255,0.8);font-family:'Lato';font-size:12px;margin:0;margin-top:2px;">Active until 18 November 2027</p>
+                        <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;pointer-events:none;">Provisional Driver's Licence</p>
+                        <p style="color:rgba(255,255,255,0.85);font-family:'Lato';font-size:12px;margin:0;margin-top:1px;pointer-events:none;">Active until 18 November 2027</p>
                     </div>
-                    <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c3.17 0 5.9 1.86 7.18 4.54l-2.6-.04c-.4 0-.78.18-1.03.49L13 12.5V11c0-.55-.45-1-1-1s-1 .45-1 1v1.5L8.45 8.99c-.25-.31-.63-.49-1.03-.49l-2.6.04C6.1 5.86 8.83 4 12 4zM4 12c0-.92.16-1.81.46-2.63L7.05 10.5 10 15H6.6c-.34 0-.65.17-.83.45l-1.2 1.86C4.2 16.04 4 14.06 4 12zm8 8c-2.17 0-4.16-.87-5.62-2.28l.98-1.52h5.28l1.47 2.2c.19.29.51.46.85.46l2.36.01C15.97 19.21 14.08 20 12 20zm6.17-3.55c-.18-.28-.49-.45-.83-.45H14l2.95-4.5 2.55-1.13c.3.81.46 1.7.46 2.63 0 1.2-.29 2.34-.79 3.35v.1z"/></svg>
-                    </div>
+                    <svg style="width:28px;height:28px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><line x1="12" y1="3" x2="12" y2="9.5"/><line x1="3.5" y1="14" x2="8.8" y2="12"/><line x1="20.5" y1="14" x2="15.2" y2="12"/></svg>
                 </div>
             </div>
             <div class="lBlock"></div>
