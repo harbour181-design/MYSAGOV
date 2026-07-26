@@ -189,26 +189,118 @@
             top: 100%;
             width: 100%;
             height: 99%;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
             background-color: #0D5A20;
-            border-radius: 15px;
+            border-radius: 15px 15px 0 0;
             transition: 0.3s;
             overflow: hidden;
             z-index: 3;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .slideUpAuth>.header {
+            background-color: #0D5A20;
+            flex-shrink: 0;
+            height: auto;
+            min-height: 70px;
+            padding-top: env(safe-area-inset-top, 0px);
         }
 
         .pin {
-            position: absolute;
-            top: 32%;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .pin>p {
+            color: white;
+            font-family: "Lato";
+            font-size: 16px;
+            margin: 0;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .pinDots {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .pinDot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.25);
+            transition: 0.15s;
+        }
+
+        .pinDot.filled {
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .pinKeypad {
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 6px;
+            padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        }
+
+        .pinKeypad-row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .pinKey {
+            width: calc(33.33% - 6px);
+            max-width: 120px;
+            height: 46px;
+            background: rgba(255, 255, 255, 0.22);
+            border: none;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .pinKey:active {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .pinKey-num {
+            color: white;
+            font-family: "LatoBold";
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .pinKey-letters {
+            color: rgba(255, 255, 255, 0.7);
+            font-family: "Lato";
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            margin-top: 2px;
+        }
+
+        .pinKey-empty {
+            background: transparent;
+            pointer-events: none;
+        }
+
+        .pinKey-back svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
         }
 
         .header>h {
@@ -1535,7 +1627,7 @@
                 <div></div>
                 <div></div>
             </div>
-            <div class="license" onclick="if(!hasAuthed){document.querySelector('#focusme').focus();} displayDetails()">
+            <div class="license" onclick="displayDetails()">
                 <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
                     <div>
                         <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;pointer-events:none;">Provisional Driver's Licence</p>
@@ -1547,20 +1639,42 @@
             <div class="lBlock"></div>
         </div>
         <div class="slideUpAuth">
-            <div class="header" style="background-color:#0D5A20;display:flex;align-items:flex-end;padding-bottom:10px;position:relative;height:7%;">
-                <svg onclick="hideDetails()" style="position:absolute;left:15px;bottom:10px;width:22px;height:22px;cursor:pointer;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <div class="header" style="display:flex;align-items:flex-end;padding-bottom:12px;position:relative;">
+                <svg onclick="hideDetails()" style="position:absolute;left:15px;bottom:14px;width:20px;height:20px;cursor:pointer;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 <div style="flex:1;text-align:center;">
-                    <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;">Provisional Driver's Licence</p>
-                    <p style="color:rgba(255,255,255,0.7);font-family:'Lato';font-size:11.5px;margin:0;margin-top:2px;">Active until 18 November 2027</p>
+                    <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;pointer-events:none;">Provisional Driver's Licence</p>
+                    <p style="color:rgba(255,255,255,0.7);font-family:'Lato';font-size:11.5px;margin:0;margin-top:2px;pointer-events:none;">Active until 18 November 2027</p>
                 </div>
             </div>
             <div class="pin">
-                <p style="color:white;font-family:'Lato';font-size:16px;margin:0;text-align:center;">This credential requires your PIN to access.</p>
-                <div id="pinDots" style="display:flex;gap:14px;margin-top:20px;">
-                    <div class="pinDot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.3);transition:0.15s;"></div>
-                    <div class="pinDot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.3);transition:0.15s;"></div>
-                    <div class="pinDot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.3);transition:0.15s;"></div>
-                    <div class="pinDot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.3);transition:0.15s;"></div>
+                <p>This credential requires your PIN to access.</p>
+                <div id="pinDots" class="pinDots">
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
+                </div>
+            </div>
+            <div class="pinKeypad">
+                <div class="pinKeypad-row">
+                    <button class="pinKey" onclick="handlePinInput('1')"><span class="pinKey-num">1</span></button>
+                    <button class="pinKey" onclick="handlePinInput('2')"><span class="pinKey-num">2</span><span class="pinKey-letters">ABC</span></button>
+                    <button class="pinKey" onclick="handlePinInput('3')"><span class="pinKey-num">3</span><span class="pinKey-letters">DEF</span></button>
+                </div>
+                <div class="pinKeypad-row">
+                    <button class="pinKey" onclick="handlePinInput('4')"><span class="pinKey-num">4</span><span class="pinKey-letters">GHI</span></button>
+                    <button class="pinKey" onclick="handlePinInput('5')"><span class="pinKey-num">5</span><span class="pinKey-letters">JKL</span></button>
+                    <button class="pinKey" onclick="handlePinInput('6')"><span class="pinKey-num">6</span><span class="pinKey-letters">MNO</span></button>
+                </div>
+                <div class="pinKeypad-row">
+                    <button class="pinKey" onclick="handlePinInput('7')"><span class="pinKey-num">7</span><span class="pinKey-letters">PQRS</span></button>
+                    <button class="pinKey" onclick="handlePinInput('8')"><span class="pinKey-num">8</span><span class="pinKey-letters">TUV</span></button>
+                    <button class="pinKey" onclick="handlePinInput('9')"><span class="pinKey-num">9</span><span class="pinKey-letters">WXYZ</span></button>
+                </div>
+                <div class="pinKeypad-row">
+                    <div class="pinKey pinKey-empty"></div>
+                    <button class="pinKey" onclick="handlePinInput('0')"><span class="pinKey-num">0</span></button>
+                    <button class="pinKey pinKey-back" onclick="handlePinDelete()"><svg viewBox="0 0 24 24"><path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 12.59L17.59 17 14 13.41 10.41 17 9 15.59 12.59 12 9 8.41 10.41 7 14 10.59 17.59 7 19 8.41 15.41 12 19 15.59z"/></svg></button>
                 </div>
             </div>
         </div>
@@ -2376,42 +2490,35 @@
 
 
 
-        function displayDetails() {
-            requestMotionPermission()
-            if (!hasAuthed) {
-                pinEntry = '';
-                var dots = document.querySelectorAll('.pinDot');
-                for (var i = 0; i < dots.length; i++) dots[i].style.background = 'rgba(255,255,255,0.3)';
-                document.querySelector(".slideUpAuth").style = 'top:1%;'
-                setTimeout(function() { document.getElementById('focusme').focus(); }, 400);
-            } else {
-                document.querySelector(".slideUp").style = 'top:0%;'
+        function resetPinDots() {
+            var dots = document.querySelectorAll('.pinDot');
+            for (var i = 0; i < dots.length; i++) dots[i].classList.remove('filled');
+        }
+
+        function updatePinDots() {
+            var dots = document.querySelectorAll('.pinDot');
+            for (var i = 0; i < dots.length; i++) {
+                if (i < pinEntry.length) dots[i].classList.add('filled');
+                else dots[i].classList.remove('filled');
             }
         }
 
-        var motionPermissionGranted = window.localStorage.getItem('motionGranted') === 'true';
-        function requestMotionPermission() {
-            if (motionPermissionGranted) return;
-            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-                DeviceMotionEvent.requestPermission().then(function(state) {
-                    if (state === 'granted') {
-                        motionPermissionGranted = true;
-                        window.localStorage.setItem('motionGranted', 'true');
-                        myShakeEvent.stop();
-                        myShakeEvent.start();
-                    }
-                }).catch(function(){});
-            } else {
-                motionPermissionGranted = true;
-            }
+        function displayDetails() {
+            requestMotionPermission()
+            pinEntry = '';
+            resetPinDots();
+            document.querySelector(".slideUpAuth").style = 'top:1%;'
         }
+
         async function hideDetails() {
+            hasAuthed = false;
+            pinEntry = '';
+            resetPinDots();
             document.querySelector(".slideUp").style = 'top:100%;'
             document.querySelector(".slideUpAuth").style = 'top:100%;'
             document.querySelector(".detailsMain").scrollTo(0, 0)
             await new Promise(r => { setTimeout(r, 200) })
             selectFirst()
-
         }
 
 
@@ -2436,22 +2543,17 @@
         function handlePinInput(num) {
             if (pinEntry.length >= 4) return;
             pinEntry += num;
-            var dots = document.querySelectorAll('.pinDot');
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].style.background = i < pinEntry.length ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)';
-            }
+            updatePinDots();
             if (pinEntry.length === 4) {
                 setTimeout(function() {
                     if (pinEntry === correctPin) {
                         document.querySelector(".slideUpAuth").style = 'top:100%;'
-                        document.activeElement.blur()
                         setTimeout(function() {
                             document.querySelector(".slideUp").style = 'top:0%;'
                             hasAuthed = true;
                         }, 400);
                     } else {
-                        var dots = document.querySelectorAll('.pinDot');
-                        for (var i = 0; i < dots.length; i++) dots[i].style.background = 'rgba(255,255,255,0.3)';
+                        resetPinDots();
                         pinEntry = '';
                     }
                 }, 300);
@@ -2461,23 +2563,25 @@
         function handlePinDelete() {
             if (pinEntry.length === 0) return;
             pinEntry = pinEntry.slice(0, -1);
-            var dots = document.querySelectorAll('.pinDot');
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].style.background = i < pinEntry.length ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)';
-            }
+            updatePinDots();
         }
 
-        document.getElementById('focusme').addEventListener('input', function(e) {
-            var val = e.target.value;
-            if (val.length > 0) {
-                var lastChar = val.charAt(val.length - 1);
-                if (/[0-9]/.test(lastChar)) handlePinInput(lastChar);
-                e.target.value = '';
+        var motionPermissionGranted = window.localStorage.getItem('motionGranted') === 'true';
+        function requestMotionPermission() {
+            if (motionPermissionGranted) return;
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+                DeviceMotionEvent.requestPermission().then(function(state) {
+                    if (state === 'granted') {
+                        motionPermissionGranted = true;
+                        window.localStorage.setItem('motionGranted', 'true');
+                        myShakeEvent.stop();
+                        myShakeEvent.start();
+                    }
+                }).catch(function(){});
+            } else {
+                motionPermissionGranted = true;
             }
-        });
-        document.getElementById('focusme').addEventListener('keydown', function(e) {
-            if (e.key === 'Backspace') handlePinDelete();
-        });
+        }
 
         async function authenticateUser() {
         }
