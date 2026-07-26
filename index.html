@@ -154,7 +154,7 @@
             width: 100%;
             aspect-ratio: 357/83;
             background-color: #0D5A20;
-            border-radius: 3px;
+            border-radius: 6px;
             box-sizing: border-box;
             padding: 15px;
             padding-top: 5px;
@@ -234,7 +234,7 @@
         .header>h {
             position: absolute;
             width: 100vw;
-            bottom: 18px;
+            bottom: 19px;
             text-align: center;
             color: white;
             font-family: "LatoBold";
@@ -247,12 +247,14 @@
             position: absolute;
             width: 100vw;
             left: 0;
-            bottom: 3px;
+            bottom: 4px;
             margin: 0;
             text-align: center;
-            color: #a0a6ac;
+            color: #ffffff;
             font-family: "Lato";
-            font-size: 11px;
+            font-size: 12px;
+            letter-spacing: 0.1px;
+            -webkit-font-smoothing: antialiased;
             opacity: 1;
             transition: 0.3s
         }
@@ -1232,6 +1234,7 @@
 
         .settingsMain>.setList>div.spacer {
             background-color: transparent !important;
+            height: 32px;
         }
 
         .settingsMain>.setList>div:not(.spacer.nohov):hover,
@@ -1269,7 +1272,8 @@
             color: #818085;
             font-family: "Arial";
             font-size: 13px;
-            transform: translateY(-5px)
+            line-height: 32px;
+            transform: translateY(-3px)
         }
 
         /* The switch - the box around the slider */
@@ -1550,9 +1554,9 @@
                 </div>
                 <svg class="wheel" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="11.5" fill="#ffffff" />
-                    <path d="M4.06,11.02 A8,8 0 0 1 19.94,11.02 L15.97,11.51 A4,4 0 0 0 8.03,11.51 Z" fill="#0D5A20" />
-                    <path d="M19.94,12.98 A8,8 0 0 1 12.98,19.94 L12.49,15.97 A4,4 0 0 0 15.97,12.49 Z" fill="#0D5A20" />
-                    <path d="M11.02,19.94 A8,8 0 0 1 4.06,12.98 L8.03,12.49 A4,4 0 0 0 11.51,15.97 Z" fill="#0D5A20" />
+                    <path d="M3.506,10.655 A8.6,8.6 0 0 1 20.494,10.655 L15.358,11.468 A3.4,3.4 0 0 0 8.642,11.468 Z" fill="#0D5A20" />
+                    <path d="M20.494,13.345 A8.6,8.6 0 0 1 13.345,20.494 L12.532,15.358 A3.4,3.4 0 0 0 15.358,12.532 Z" fill="#0D5A20" />
+                    <path d="M10.655,20.494 A8.6,8.6 0 0 1 3.506,13.345 L8.642,12.532 A3.4,3.4 0 0 0 11.468,15.358 Z" fill="#0D5A20" />
                 </svg>
             </div>
             <div class="lBlock"></div>
