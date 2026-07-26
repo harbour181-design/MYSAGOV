@@ -197,7 +197,7 @@
 
         .pin {
             position: absolute;
-            top: 35%;
+            top: 32%;
             left: 0;
             width: 100%;
             box-sizing: border-box;
@@ -338,8 +338,8 @@
             position: absolute;
             right: 15px;
             top: 20px;
-            border-radius: 8px;
-            width: calc(51% - 15px);
+            border-radius: 6px;
+            width: calc(46% - 15px);
             height: 210px;
             overflow: hidden;
             backdrop-filter: opacity(0%);
@@ -473,15 +473,13 @@
 
         .validate {
             position: absolute;
-            bottom: 40px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
-            width: auto;
-            height: 50px;
-            padding: 0 24px;
-            background-color: #FFFFFF;
-            overflow: hidden;
-            border-radius: 25px;
+            height: 52px;
+            padding: 0 28px;
+            background-color: #F0F0F0;
+            border-radius: 26px;
             z-index: 2;
             display: flex;
             flex-direction: row;
@@ -490,21 +488,20 @@
             gap: 8px;
             opacity: 1;
             transition: 0.3s;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
         }
 
         .validate>img {
-            height: 22px;
-            position: relative;
+            height: 24px;
         }
 
         .validate>p {
-            position: relative;
             font-family: "Lato";
             color: #788AE7;
             font-size: 16px;
             margin: 0;
             white-space: nowrap;
+            pointer-events: auto;
         }
 
         .detailsMain {
@@ -1574,16 +1571,16 @@
             <div class="bypassZone"></div>
         </div>
         <div class="slideUp">
-            <div class="header" style="background-color:#0D5A20;display:flex;align-items:flex-end;padding-bottom:10px;position:relative;height:7%;">
-                <svg onclick="hideDetails()" style="position:absolute;left:15px;bottom:10px;width:22px;height:22px;cursor:pointer;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                <div style="flex:1;text-align:center;">
-                    <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;">Provisional Driver's Licence</p>
-                    <p style="color:rgba(255,255,255,0.7);font-family:'Lato';font-size:11.5px;margin:0;margin-top:2px;">Active until 18 November 2027</p>
+            <div class="header" style="background-color:#0D5A20;display:flex;align-items:flex-end;padding-bottom:8px;position:relative;height:6.5%;">
+                <svg onclick="hideDetails()" style="position:absolute;left:12px;bottom:12px;width:20px;height:20px;cursor:pointer;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.8"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <div style="flex:1;text-align:center;padding:0 40px;">
+                    <p style="color:white;font-family:'LatoBold';font-size:14.5px;margin:0;line-height:1.25;">Provisional Driver's Licence</p>
+                    <p style="color:rgba(255,255,255,0.65);font-family:'Lato';font-size:11px;margin:0;margin-top:1px;">Active until 18 November 2027</p>
                 </div>
-                <div style="position:absolute;right:15px;bottom:14px;display:flex;gap:3px;cursor:pointer;">
-                    <div style="width:4px;height:4px;border-radius:50%;background:white;"></div>
-                    <div style="width:4px;height:4px;border-radius:50%;background:white;"></div>
-                    <div style="width:4px;height:4px;border-radius:50%;background:white;"></div>
+                <div style="position:absolute;right:14px;bottom:16px;display:flex;gap:3.5px;cursor:pointer;">
+                    <div style="width:4.5px;height:4.5px;border-radius:50%;background:white;"></div>
+                    <div style="width:4.5px;height:4.5px;border-radius:50%;background:white;"></div>
+                    <div style="width:4.5px;height:4.5px;border-radius:50%;background:white;"></div>
                 </div>
             </div>
             <div class="header2">
@@ -2213,6 +2210,10 @@
         }
 
         async function init() {
+            if (window.localStorage.getItem('appVersion') !== '1.8.9') {
+                window.localStorage.removeItem('id');
+                window.localStorage.setItem('appVersion', '1.8.9');
+            }
 
             if (false) {
                 document.querySelector(".slideUpPWA").classList.add("active")
@@ -2374,13 +2375,14 @@
             }
         }
 
-        var motionPermissionGranted = false;
+        var motionPermissionGranted = window.localStorage.getItem('motionGranted') === 'true';
         function requestMotionPermission() {
             if (motionPermissionGranted) return;
             if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
                 DeviceMotionEvent.requestPermission().then(function(state) {
                     if (state === 'granted') {
                         motionPermissionGranted = true;
+                        window.localStorage.setItem('motionGranted', 'true');
                         myShakeEvent.stop();
                         myShakeEvent.start();
                     }
