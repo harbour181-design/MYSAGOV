@@ -111,9 +111,9 @@
 
         .settings {
             position: absolute;
-            width: 27px;
-            height: 27px;
-            bottom: 15px;
+            width: 16px;
+            height: 16px;
+            bottom: 20px;
             left: 20px;
             fill: #8e9dff;
             transition: 0.1s;
@@ -121,9 +121,9 @@
 
         .plus {
             position: absolute;
-            width: 27px;
-            height: 27px;
-            bottom: 15px;
+            width: 16px;
+            height: 16px;
+            bottom: 20px;
             right: 20px;
             opacity: 1;
             transition: 0.3s
@@ -134,6 +134,67 @@
             width: calc(100% - 30px);
             bottom: 2px;
             right: 20px;
+        }
+
+        .titleBar {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .titleBar>.tbText {
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .tbTitle {
+            margin: 0;
+            color: #ffffff;
+            font-family: "LatoBold";
+            font-size: 16px;
+            line-height: 1.2;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .tbSub {
+            margin: 0;
+            margin-top: 1px;
+            color: #ffffff;
+            font-family: "Lato";
+            font-size: 11px;
+            line-height: 1.2;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .tbChev {
+            position: absolute;
+            left: 18px;
+            bottom: 13px;
+            width: 21px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .tbDots {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            display: flex;
+            gap: 3px;
+            pointer-events: none;
+        }
+
+        .tbDots>span {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: #ffffff;
         }
 
 
@@ -226,9 +287,69 @@
 
         .pin {
             position: absolute;
-            top: 37%;
-            left: 10%;
-            width: 80%;
+            top: 36%;
+            left: 5%;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pinMsg {
+            margin: 0;
+            color: #ffffff;
+            font-family: "Lato";
+            font-size: 15px;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .pinDots {
+            display: flex;
+            gap: 44px;
+            margin-top: 42px;
+        }
+
+        .pinDot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.18);
+            transition: background-color 0.15s;
+        }
+
+        .pinDot.filled {
+            background-color: #ffffff;
+        }
+
+        .pinPad {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: grid;
+            grid-template-columns: repeat(3, 92px);
+            gap: 11px;
+        }
+
+        .padKey {
+            height: 50px;
+            border: none;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #1c1c1e;
+            font-family: "Lato";
+            font-size: 24px;
+            padding: 0;
+        }
+
+        .padKey.padBack {
+            background-color: transparent;
+        }
+
+        .padKey.padBack>svg {
+            width: 24px;
+            height: 24px;
         }
 
         .header>h {
@@ -491,13 +612,13 @@
         }
 
         .id-img {
-            width: calc(50vw - 13px);
-            aspect-ratio: 55/60;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
             position: relative;
             pointer-events: auto;
-            min-height: 100%;
         }
 
 
@@ -516,12 +637,12 @@
         .validate {
             position: absolute;
             bottom: 40px;
-            left: 30%;
-            width: 40%;
-            height: 60px;
+            left: 35%;
+            width: 30%;
+            height: 45px;
             background-color: #FFFFFF;
             overflow: hidden;
-            border-radius: 30px;
+            border-radius: 23px;
             z-index: 2;
             display: flex;
             flex-direction: row;
@@ -539,8 +660,8 @@
         }
 
         .validate>img {
-            top: 13px;
-            height: calc(100% - 28px);
+            top: 10px;
+            height: calc(100% - 21px);
             position: relative;
         }
 
@@ -548,11 +669,11 @@
             position: relative;
             font-family: "Lato";
             color: #788AE7;
-            font-size: 17px;
+            font-size: 13px;
             margin: 0;
-            margin-left: 5px;
+            margin-left: 4px;
             height: 100%;
-            line-height: 60px;
+            line-height: 45px;
         }
 
         .detailsMain {
@@ -1552,43 +1673,55 @@
                     <p class="licenseTitle">Provisional Driver's Licence</p>
                     <p class="licenseSub">Active until 18 November 2027</p>
                 </div>
-                <svg class="wheel" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="11.5" fill="#ffffff" />
-                    <path d="M3.506,10.655 A8.6,8.6 0 0 1 20.494,10.655 L15.358,11.468 A3.4,3.4 0 0 0 8.642,11.468 Z" fill="#0D5A20" />
-                    <path d="M20.494,13.345 A8.6,8.6 0 0 1 13.345,20.494 L12.532,15.358 A3.4,3.4 0 0 0 15.358,12.532 Z" fill="#0D5A20" />
-                    <path d="M10.655,20.494 A8.6,8.6 0 0 1 3.506,13.345 L8.642,12.532 A3.4,3.4 0 0 0 11.468,15.358 Z" fill="#0D5A20" />
+                <svg class="wheel" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10.2" stroke="#ffffff" stroke-width="3.1" />
+                    <path d="M3 12.4 H21" stroke="#ffffff" stroke-width="2.6" />
+                    <path d="M12 12.4 V21" stroke="#ffffff" stroke-width="2.6" />
+                    <ellipse cx="12" cy="11.9" rx="5.1" ry="3.5" fill="#ffffff" />
                 </svg>
             </div>
             <div class="lBlock"></div>
         </div>
         <div class="slideUpAuth">
             <div class="header">
-                <img class='full' src='./title3.png' onclick="hideDetails()" />
+                <div class="titleBar">
+                    <svg class="tbChev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="hideDetails()">
+                        <path d="M5 9 L12 16 L19 9" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="tbText">
+                        <p class="tbTitle">Provisional Driver's Licence</p>
+                        <p class="tbSub">Active until 18 November 2027</p>
+                    </div>
+                </div>
             </div>
-            <div class="pin" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px;">
-                <p style="color:#0D5A20;font-size:14px;margin-bottom:20px;">This credential requires your PIN to access.</p>
-                <div style="display:flex;gap:16px;margin-bottom:40px;">
-                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
-                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
-                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
-                    <div class="pinDot" style="width:14px;height:14px;border-radius:50%;border:2px solid #aaa;background:transparent;"></div>
+            <div class="pin">
+                <p class="pinMsg">This credential requires your PIN to access.</p>
+                <div class="pinDots">
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
+                    <div class="pinDot"></div>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(3,80px);gap:10px;justify-content:center;">
-                    <button onclick="handlePinInput('1')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">1</button>
-                    <button onclick="handlePinInput('2')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">2</button>
-                    <button onclick="handlePinInput('3')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">3</button>
-                    <button onclick="handlePinInput('4')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">4</button>
-                    <button onclick="handlePinInput('5')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">5</button>
-                    <button onclick="handlePinInput('6')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">6</button>
-                    <button onclick="handlePinInput('7')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">7</button>
-                    <button onclick="handlePinInput('8')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">8</button>
-                    <button onclick="handlePinInput('9')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">9</button>
+            </div>
+            <div class="pinPad">
+                    <button class="padKey" onclick="handlePinInput('1')">1</button>
+                    <button class="padKey" onclick="handlePinInput('2')">2</button>
+                    <button class="padKey" onclick="handlePinInput('3')">3</button>
+                    <button class="padKey" onclick="handlePinInput('4')">4</button>
+                    <button class="padKey" onclick="handlePinInput('5')">5</button>
+                    <button class="padKey" onclick="handlePinInput('6')">6</button>
+                    <button class="padKey" onclick="handlePinInput('7')">7</button>
+                    <button class="padKey" onclick="handlePinInput('8')">8</button>
+                    <button class="padKey" onclick="handlePinInput('9')">9</button>
                     <div></div>
-                    <button onclick="handlePinInput('0')" style="height:55px;border-radius:8px;border:none;background:#fff;color:#222;font-size:22px;font-weight:500;">0</button>
-                    <button onclick="handlePinDelete()" style="height:55px;border-radius:8px;border:none;background:transparent;color:#fff;font-size:22px;font-weight:500;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+                    <button class="padKey" onclick="handlePinInput('0')">0</button>
+                    <button class="padKey padBack" onclick="handlePinDelete()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z" />
+                            <line x1="18" y1="9" x2="12" y2="15" />
+                            <line x1="12" y1="9" x2="18" y2="15" />
+                        </svg>
                     </button>
-                </div>
             </div>
         </div>
         <div class="slideUpSetup">
@@ -1613,7 +1746,16 @@
         </div>
         <div class="slideUp">
             <div class="header">
-                <img class='full' src='./title2.png' onclick="hideDetails()" />
+                <div class="titleBar">
+                    <svg class="tbChev" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="hideDetails()">
+                        <path d="M5 9 L12 16 L19 9" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="tbText">
+                        <p class="tbTitle">Provisional Driver's Licence</p>
+                        <p class="tbSub">Active until 18 November 2027</p>
+                    </div>
+                    <div class="tbDots"><span></span><span></span><span></span></div>
+                </div>
             </div>
             <div class="header2">
                 <div class="selected first" onclick="selectFirst()">
@@ -2444,14 +2586,14 @@
 
         function resetPinDots() {
             var dots = document.querySelectorAll('.pinDot');
-            for (var i = 0; i < dots.length; i++) { dots[i].style.background = 'transparent'; }
+            for (var i = 0; i < dots.length; i++) dots[i].classList.remove('filled');
         }
 
         function updatePinDots() {
             var dots = document.querySelectorAll('.pinDot');
             for (var i = 0; i < dots.length; i++) {
-                if (i < pinEntry.length) { dots[i].style.background = '#fff'; }
-                else { dots[i].style.background = 'transparent'; }
+                if (i < pinEntry.length) dots[i].classList.add('filled');
+                else dots[i].classList.remove('filled');
             }
         }
 
