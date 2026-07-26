@@ -1431,7 +1431,36 @@
         <img src="./mysagov.jpeg" />
     </div>
     <div class="main">
-        <div class="validate" onclick="displayDetails()">
+        <div class="scannerOverlay" id="scannerOverlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:100;background:#000;">
+            <video id="scannerVideo" autoplay playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"></video>
+            <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 20px 0 20px;padding-top:env(safe-area-inset-top,20px);">
+                    <svg onclick="closeScanner()" style="width:28px;height:28px;cursor:pointer;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span style="color:white;font-family:'Lato';font-size:15px;">Need help</span>
+                        <div style="width:22px;height:22px;border-radius:50%;border:2px solid white;display:flex;align-items:center;justify-content:center;">
+                            <span style="color:white;font-family:'LatoBold';font-size:13px;">?</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+                    <div style="width:70vw;height:40vh;position:relative;">
+                        <div style="position:absolute;top:0;left:0;width:35px;height:35px;border-top:4px solid white;border-left:4px solid white;border-radius:4px 0 0 0;"></div>
+                        <div style="position:absolute;top:0;right:0;width:35px;height:35px;border-top:4px solid white;border-right:4px solid white;border-radius:0 4px 0 0;"></div>
+                        <div style="position:absolute;bottom:0;left:0;width:35px;height:35px;border-bottom:4px solid white;border-left:4px solid white;border-radius:0 0 0 4px;"></div>
+                        <div style="position:absolute;bottom:0;right:0;width:35px;height:35px;border-bottom:4px solid white;border-right:4px solid white;border-radius:0 0 4px 0;"></div>
+                    </div>
+                </div>
+                <div style="padding:0 30px 20px 30px;text-align:center;">
+                    <p style="color:white;font-family:'Lato';font-size:15px;line-height:1.4;margin:0 0 40px 0;">Align the barcode of a digital licence<br>within frame to verify</p>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:env(safe-area-inset-bottom,30px);">
+                        <span style="font-size:22px;">&#9888;</span>
+                        <p style="color:white;font-family:'Lato';font-size:12.5px;margin:0;text-align:left;">Only licences using the mySAGOV<br>app can be scanned</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="validate" onclick="openScanner()">
             <div></div>
             <img src="./validate.png" />
             <p>Validate</p>
@@ -2422,6 +2451,27 @@
 
         function shakeEventDidOccur() {
             showShakeAnimation()
+        }
+
+        var scannerStream = null;
+        function openScanner() {
+            document.getElementById('scannerOverlay').style.display = 'block';
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function(stream) {
+                    scannerStream = stream;
+                    document.getElementById('scannerVideo').srcObject = stream;
+                })
+                .catch(function(err) {
+                    console.error('Camera error:', err);
+                });
+        }
+        function closeScanner() {
+            document.getElementById('scannerOverlay').style.display = 'none';
+            if (scannerStream) {
+                scannerStream.getTracks().forEach(function(t) { t.stop(); });
+                scannerStream = null;
+            }
+            document.getElementById('scannerVideo').srcObject = null;
         }
 
         var lastRefreshTime = Date.now();
