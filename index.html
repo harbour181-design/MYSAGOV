@@ -7,7 +7,7 @@
     <link rel="manifest" href="./mysagov.webmanifest" />
     <link rel="icon" href="./icon.png">
     <meta content="width=390, initial-scale=1.0, user-scalable=no" name="viewport">
-    <meta name="theme-color" content="#000000" id="theme-color-meta">
+    <meta name="theme-color" content="#1A2830" id="theme-color-meta">
     <script src="./shake.js"></script>
     <script src="./hammer.min.js"></script>
 
@@ -32,7 +32,7 @@
             top: 0;
             left: 0;
             overflow: hidden;
-            background-color: #000000;
+            background-color: #1A2830;
             z-index: 2;
             max-width: 550px;
 
@@ -167,7 +167,7 @@
             scroll-snap-type: mandatory
         }
 
-        .license>img {
+        .license>div {
             position: relative;
             width: 100%;
             height: auto;
@@ -206,6 +206,7 @@
             top: 37%;
             left: 10%;
             width: 80%;
+            box-sizing: border-box;
         }
 
         .header>h {
@@ -547,7 +548,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000;
+            background-color: #1A2830;
             z-index: 5;
             transition: 0.3s;
             opacity: 1;
@@ -572,7 +573,7 @@
             top: 100%;
             width: 100%;
             height: 99%;
-            background-color: #000000;
+            background-color: #1A2830;
             transition: 0.8s;
             overflow: hidden;
             z-index: 3;
@@ -810,7 +811,7 @@
             top: 100%;
             width: 100%;
             height: 99%;
-            background-color: #000000;
+            background-color: #1A2830;
             transition: 0.8s;
             overflow: hidden;
             z-index: 2;
@@ -1505,15 +1506,33 @@
                 <div></div>
             </div>
             <div class="license" onclick="if(!hasAuthed){document.querySelector('#focusme').focus();} displayDetails()">
-                <img src="./content.png">
+                <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
+                    <div>
+                        <p style="color:white;font-family:'LatoBold';font-size:15px;margin:0;line-height:1.3;">Provisional Driver's Licence</p>
+                        <p style="color:rgba(255,255,255,0.8);font-family:'Lato';font-size:12px;margin:0;margin-top:2px;">Active until 18 November 2027</p>
+                    </div>
+                    <img src="./steering.png" style="width:32px;height:32px;opacity:0.9;" />
+                </div>
             </div>
             <div class="lBlock"></div>
         </div>
         <div class="slideUpAuth">
-            <div class="header">
-                <img class='full' src='./title3.png' onclick="hideDetails()" />
+            <div class="header" onclick="hideDetails()" style="cursor:pointer;display:flex;align-items:flex-end;padding-bottom:8px;position:relative;">
+                <svg style="position:absolute;left:15px;bottom:12px;width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <div style="flex:1;text-align:center;">
+                    <p style="color:white;font-family:'LatoBold';font-size:14px;margin:0;line-height:1.2;">Provisional Driver's Licence</p>
+                    <p style="color:rgba(255,255,255,0.75);font-family:'Lato';font-size:11px;margin:0;margin-top:1px;">Active until 18 November 2027</p>
+                </div>
             </div>
-            <img src="./pin.png" class="pin" />
+            <div class="pin" style="background-color:#0D5A20;border-radius:12px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:15px;">
+                <p style="color:white;font-family:'Lato';font-size:15px;margin:0;text-align:center;">This credential requires your PIN to access.</p>
+                <div style="display:flex;gap:12px;margin-top:5px;">
+                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.35);"></div>
+                </div>
+            </div>
         </div>
         <div class="slideUpSetup">
             <input type="file" id="fileInput" accept=".idkey" hidden>
@@ -1536,8 +1555,12 @@
             <div class="bypassZone"></div>
         </div>
         <div class="slideUp">
-            <div class="header">
-                <img class='full' src='./title2.png' onclick="hideDetails()" />
+            <div class="header" onclick="hideDetails()" style="cursor:pointer;background-color:#0D5A20;display:flex;align-items:flex-end;padding-bottom:8px;position:relative;">
+                <svg style="position:absolute;left:15px;bottom:12px;width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <div style="flex:1;text-align:center;">
+                    <p style="color:white;font-family:'LatoBold';font-size:14px;margin:0;line-height:1.2;">Provisional Driver's Licence</p>
+                    <p style="color:rgba(255,255,255,0.75);font-family:'Lato';font-size:11px;margin:0;margin-top:1px;">Active until 18 November 2027</p>
+                </div>
             </div>
             <div class="header2">
                 <div class="selected first" onclick="selectFirst()">
@@ -1815,7 +1838,7 @@
                     </svg>
                 </div>
                 <div class="spacer">
-                    <p>Version 1.8.8 (82539)</p>
+                    <p>Version 1.8.9 (175023)</p>
                 </div>
                 <div>
                     <p>Log Out</p>
@@ -2150,7 +2173,7 @@
 
 
         async function trial() {
-            document.getElementById("theme-color-meta").content = '#000000'
+            document.getElementById("theme-color-meta").content = '#1A2830'
 
             document.getElementById("numb").innerText = "JN4467"
             document.getElementById("dob").innerText = "10/06/2008"
@@ -2196,17 +2219,15 @@
 
                 await new Promise(r => { setTimeout(r, 1500) })
                 document.querySelector(".intro").classList.add('introbye')
-                document.getElementById("theme-color-meta").content = '#000000'
+                document.getElementById("theme-color-meta").content = '#1A2830'
                 await new Promise(r => { setTimeout(r, 500) })
 
             }
         }
         init()
 
-
-
         function setup() {
-            document.getElementById("theme-color-meta").content = '#000000'
+            document.getElementById("theme-color-meta").content = '#1A2830'
             document.querySelector(".slideUpSetup").classList.add("active")
         }
 
@@ -2317,6 +2338,9 @@
 
 
         function displayDetails() {
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+                DeviceMotionEvent.requestPermission().catch(()=>{})
+            }
             authenticateUser()
             if (!hasAuthed) document.querySelector(".slideUpAuth").style = 'top:1%;'
         }
@@ -2346,66 +2370,12 @@
 
 
         async function authenticateUser() {
-            if (window.location.host == "127.0.0.1:5500" || window.location.host == "192.168.0.20:5500") {
-                await new Promise(r => { setTimeout(r, 1000) })
-
-                document.querySelector(".slideUpAuth").style = 'top:100%;'
-                document.activeElement.blur()
-                await new Promise(r => { setTimeout(r, 1000) })
-                document.querySelector(".slideUp").style = 'top:0%;'
-
-
-            } else {
-                const challenge = new Uint8Array([0x8c, 0x3d, 0xa4, 0x6d, 0x70, 0xc2, 0x63, 0xf0, 0xd4, 0xe3, 0x55, 0x67, 0xf3, 0x8d, 0x3f, 0x89]);
-                const userId = new Uint8Array(16); // An example user ID
-
-                const publicKey = {
-                    challenge: challenge,
-                    rp: {
-                        name: "mySAGOV"
-                    },
-                    user: {
-                        id: userId,
-                        name: "mySAGOV",
-                        displayName: "mySAGOV"
-                    },
-                    pubKeyCredParams: [
-                        {
-                            type: "public-key",
-                            alg: -7 // "ES256"
-                        }
-                    ],
-                    authenticatorSelection: {
-                        authenticatorAttachment: "platform",
-                        userVerification: "required"
-                    },
-                    timeout: 60000,
-                    attestation: "none"
-                };
-
-                try {
-                    // This will invoke the biometric prompt
-                    if (!hasAuthed) {
-                        await new Promise(r => { setTimeout(r, 300) })
-
-                        const credential = await navigator.credentials.create({ publicKey });
-                        console.log("Credential created successfully:", credential);
-                        document.querySelector(".slideUpAuth").style = 'top:100%;'
-                        document.activeElement.blur()
-                        await new Promise(r => { setTimeout(r, 600) })
-                    }
-                    document.querySelector(".slideUpAuth").style = 'top:100%;'
-                    document.querySelector(".slideUp").style = 'top:0%;'
-                    hasAuthed = true
-
-                } catch (err) {
-                    console.error("Error creating credential:", err);
-                    await new Promise(r => { setTimeout(r, 600) })
-                    document.activeElement.blur()
-                    document.querySelector(".slideUpAuth").style = 'top:100%;'
-                    document.querySelector(".slideUp").style = 'top:0%;'
-                }
-            }
+            await new Promise(r => { setTimeout(r, 800) })
+            document.querySelector(".slideUpAuth").style = 'top:100%;'
+            document.activeElement.blur()
+            await new Promise(r => { setTimeout(r, 400) })
+            document.querySelector(".slideUp").style = 'top:0%;'
+            hasAuthed = true
         }
 
 
