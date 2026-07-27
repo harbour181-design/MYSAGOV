@@ -7,7 +7,7 @@
     <link rel="manifest" href="./mysagov.webmanifest" />
     <link rel="icon" href="./icon.png">
     <meta content="width=390, initial-scale=1.0, user-scalable=no" name="viewport">
-    <meta name="theme-color" content="#1A2830" id="theme-color-meta">
+    <meta name="theme-color" content="#000000" id="theme-color-meta">
     <script src="./shake.js"></script>
     <script src="./hammer.min.js"></script>
 
@@ -172,7 +172,7 @@
         .licenseTitle {
             color: white;
             font-family: "LatoBold";
-            font-size: 17px;
+            font-size: 16px;
             margin: 0;
             line-height: 1.2;
             pointer-events: none;
@@ -181,7 +181,7 @@
         .licenseSub {
             color: rgba(255, 255, 255, 0.75);
             font-family: "Lato";
-            font-size: 15px;
+            font-size: 14px;
             margin: 0;
             margin-top: 2px;
             line-height: 1.2;
@@ -2346,7 +2346,7 @@
 
 
         async function trial() {
-            document.getElementById("theme-color-meta").content = '#1A2830'
+            document.getElementById("theme-color-meta").content = '#000000'
 
             document.getElementById("numb").innerText = "JN4467"
             document.getElementById("dob").innerText = "10/06/2010"
@@ -2396,7 +2396,7 @@
 
                 await new Promise(r => { setTimeout(r, 1500) })
                 document.querySelector(".intro").classList.add('introbye')
-                document.getElementById("theme-color-meta").content = '#1A2830'
+                document.getElementById("theme-color-meta").content = '#000000'
                 await new Promise(r => { setTimeout(r, 500) })
 
             }
@@ -2404,7 +2404,7 @@
         init()
 
         function setup() {
-            document.getElementById("theme-color-meta").content = '#1A2830'
+            document.getElementById("theme-color-meta").content = '#000000'
             document.querySelector(".slideUpSetup").classList.add("active")
         }
 
