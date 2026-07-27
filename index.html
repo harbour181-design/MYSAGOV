@@ -222,15 +222,15 @@
 
         .pinDots {
             display: flex;
-            gap: 18px;
+            gap: 22px;
             margin-top: 28px;
         }
 
         .pinDot {
-            width: 13px;
-            height: 13px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
             transition: 0.15s;
         }
 
@@ -242,7 +242,7 @@
             flex-shrink: 0;
             background: #c8cdd3;
             padding: 8px 4px;
-            padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+            padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
         }
 
         .pinKeypad-row {
@@ -297,8 +297,8 @@
         }
 
         .pinKey-back {
-            background: #a9aeb6;
-            box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+            background: transparent;
+            box-shadow: none;
         }
 
         .pinKey-back svg {
