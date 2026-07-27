@@ -254,8 +254,8 @@
         }
 
         .wheel {
-            width: 26px;
-            height: 26px;
+            width: 23px;
+            height: 23px;
             flex-shrink: 0;
         }
 
@@ -1103,9 +1103,13 @@
             width: calc(50vw - 15px);
             transition: width 0.3s, right 0.3s, top 0.3s, aspect-ratio 0.3s, border-radius 0.3s, transform 0.2s, -webkit-transform 0.2s, background-color 0.3s;
             border-radius: 8px;
-            animation: identifier1 0.33s linear forwards;
+            opacity: 0;
             transform: translate(27.2vw, -50vw);
             aspect-ratio: 182/201;
+        }
+
+        .id-img2.armed {
+            animation: identifier1 0.33s linear forwards;
         }
 
 
@@ -1131,6 +1135,7 @@
             width: 100vw;
             aspect-ratio: 55/61;
             animation: none;
+            opacity: 1;
             transform: translate(0, 0);
             z-index: 1
         }
@@ -2336,6 +2341,7 @@
             hammertime.on('tap', function (ev) {
                 if (Date.now() - lastTap < 600) {
                     document.querySelector(".fullScreenPhoto").classList.add("show")
+                    document.querySelector(".id-img2").classList.add("armed")
                     setTimeout(() => {
                         document.getElementById("idImg").style.opacity = 0
                     }, 1)
@@ -2348,6 +2354,7 @@
             })
             hammertime.on('doubletap', function (ev) {
                 document.querySelector(".fullScreenPhoto").classList.add("show")
+                document.querySelector(".id-img2").classList.add("armed")
                 document.querySelector(".x").style.opacity = 1
                 setTimeout(() => {
                     document.getElementById("idImg").style.opacity = 0
