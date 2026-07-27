@@ -1,5 +1,5 @@
 
-const PRECACHE = 'cache-v40';
+const PRECACHE = 'cache-v41';
 const RUNTIME = 'runtime';
 const path = '/MYSAGOV/'
 
