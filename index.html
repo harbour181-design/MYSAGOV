@@ -2355,6 +2355,7 @@
             document.getElementById("idImg").src = "./photo.png"
             document.getElementById("idImg2").src = "./photo.png"
 
+            await new Promise(r => { setTimeout(r, 1500) })
             document.querySelector(".intro").classList.add('introbye')
             document.querySelector(".slideUpSetup").classList.remove("active")
 
